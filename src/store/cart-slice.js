@@ -24,6 +24,7 @@ const cartSlice = createSlice({
           name: newItem.name,
         });
       }
+      console.log(newItem);
     },
     removeFromCart() {},
     setShowCart(state) {

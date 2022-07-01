@@ -21,11 +21,11 @@ const Auth = () => {
   };
   return (
     <div className="container">
-      <h1>Login</h1>{' '}
+      <h1 className="text">Login</h1>{' '}
       <form onSubmit={handleSubmit}>
-        <label htmlFor="id">Id</label>
+        <h3>Id: admin</h3>
         <input type="text" name="id" id="id" />
-        <label htmlFor="password">Password</label>
+        <h3>Password: 123</h3>
         <input type="password" name="password" id="password" />
         <p style={{ color: 'white' }}>{error}</p>
         <button className="login-btn" type="submit">
