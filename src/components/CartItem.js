@@ -1,30 +1,35 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { cartActions } from '../store/cart-slice';
 import './Cart.css';
-// import { cartActions } from './../store/cartSlice';
+
 const CartItem = ({ item }) => {
-  const { name, quantity, total, price, id } = item;
+  const { name, quantity, totalPrice, price, id } = item;
   const dispatch = useDispatch();
-  // const removeHandler = () => {
-  //   dispatch(cartActions.removeFromCart(id));
-  // };
-  // const addHandler = () => {
-  //   dispatch(
-  //     cartActions.addToCart({
-  //       id,
-  //       name,
-  //       price,
-  //     })
-  //   );
-  // };
+  const decrementCartItem = () => {
+    dispatch(cartActions.removeFromCart(id));
+  };
+  const incrementCartItem = () => {
+    dispatch(
+      cartActions.addToCart({
+        name,
+        id,
+        price,
+      })
+    );
+  };
   return (
     <div className="cartItem">
-      <h2> {name}</h2>
-      <p>${price} /-</p>
-      <p>x{quantity}</p>
-      <article>Total ${total}</article>
-      <button className="cart-actions">-</button>
-      <button className="cart-actions">+</button>
+      <span> {name}</span>
+      <span>${price} /-</span>
+      <span>x{quantity}</span>
+      <span>Total ${totalPrice}</span>
+      <button className="cart-actions" onClick={decrementCartItem}>
+        -
+      </button>
+      <button className="cart-actions" onClick={incrementCartItem}>
+        +
+      </button>
     </div>
   );
 };
