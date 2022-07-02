@@ -29,7 +29,8 @@ const cartSlice = createSlice({
     },
     removeFromCart() {},
     setShowCart(state) {
-      state.showCart = true;
+      const temp = state.showCart;
+      state.showCart = !temp;
     },
   },
 });

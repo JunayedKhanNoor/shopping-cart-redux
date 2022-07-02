@@ -28,7 +28,7 @@ li {
   padding: 20px;
   font-size: 20px;
   font-weight: bold;
-  background: #2f3c7e;
+  background-image: linear-gradient(to right, #1e40af, #0ea5e9);
   color: #fbeaeb;
 }
 .cart-actions {
