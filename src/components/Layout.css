@@ -10,3 +10,14 @@
   margin-top: 1rem;
   font-size: 20px;
 }
+.logout-btn {
+  padding: 10px;
+  background-image: linear-gradient(to right, #1e40af, #0ea5e9);
+  border-radius: 15px;
+  border: none;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+.logout-btn:hover {
+  background-image: linear-gradient(to right, #0ea5e9, #1e40af);
+}
