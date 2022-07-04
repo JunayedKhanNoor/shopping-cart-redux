@@ -10,7 +10,7 @@ const uiSlice = createSlice({
       state.notification = {
         message: action.payload.message,
         type: action.payload.type,
-        open: action.payload.opn,
+        open: action.payload.open,
       };
     },
   },

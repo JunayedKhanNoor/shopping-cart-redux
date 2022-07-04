@@ -6,13 +6,17 @@ import Layout from './components/Layout';
 import { useEffect } from 'react';
 import Notification from './components/Notification';
 import { uiActions } from './store/ui-slice';
-
+let isFirstRender = true;
 function App() {
   const dispatch = useDispatch();
   const notification = useSelector((state) => state.ui.notification);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const cart = useSelector((state) => state.cart);
   useEffect(() => {
+    if (isFirstRender) {
+      isFirstRender = false;
+      return;
+    }
     //Send state as Sending request
     const sendRequest = async () => {
       dispatch(
@@ -51,7 +55,9 @@ function App() {
   }, [cart, dispatch]);
   return (
     <div className="App">
-      <Notification type={notification.type} message={notification.message}></Notification>
+      {notification && (
+        <Notification type={notification?.type} message={notification?.message}></Notification>
+      )}
       {!isLoggedIn && <Auth />}
       {isLoggedIn && <Layout />}
     </div>
