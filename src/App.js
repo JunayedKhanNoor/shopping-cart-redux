@@ -5,20 +5,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import Layout from './components/Layout';
 import { useEffect } from 'react';
 import Notification from './components/Notification';
-import { uiActions } from './store/ui-slice';
-import { sendCartData } from './store/cart-slice';
+import { fetchData, sendCartData } from './store/cart-actions';
 let isFirstRender = true;
 function App() {
   const dispatch = useDispatch();
   const notification = useSelector((state) => state.ui.notification);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const cart = useSelector((state) => state.cart);
+  useDispatch(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
   useEffect(() => {
     if (isFirstRender) {
       isFirstRender = false;
       return;
     }
-    dispatch(sendCartData(cart));
+    if (cart.changed) {
+      dispatch(sendCartData(cart));
+    }
   }, [cart, dispatch]);
   return (
     <div className="App">
