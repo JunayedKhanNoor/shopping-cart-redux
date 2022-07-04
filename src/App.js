@@ -4,6 +4,7 @@ import Auth from './components/Auth';
 import { useSelector } from 'react-redux';
 import Layout from './components/Layout';
 import { useEffect } from 'react';
+import Notification from './components/Notification';
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -19,9 +20,11 @@ function App() {
       );
       const data = await res.json();
     };
+    sendRequest();
   }, [cart]);
   return (
     <div className="App">
+      <Notification type="success" message="Dummy message"></Notification>
       {!isLoggedIn && <Auth />}
       {isLoggedIn && <Layout />}
     </div>
